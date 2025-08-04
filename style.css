@@ -1,0 +1,286 @@
+:root {
+  --primary-color: #00bfa6;
+  --secondary-color: #1a1a2e;
+  --background-color: #f4f7f5;
+  --text-color: #333;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+/* === NAVIGATION === */
+.navbar {
+  transition: background-color 0.4s ease-in-out;
+}
+.navbar .navbar-brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.navbar.bg-dark {
+    background-color: var(--secondary-color) !important;
+}
+
+/* REVISED HERO SECTION FOR CONSTELLATION CANVAS */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color); /* Fallback color */
+    overflow: hidden;
+}
+
+#constellation-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Sits behind hero text */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Sits on top of the canvas */
+}
+
+@keyframes gradientBG {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+.hero-content #typed-text {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* === MAIN CONTENT & SECTIONS === */
+.main-content { background-color: white; }
+section { padding: 6rem 0; }
+
+.divider {
+    width: 100px;
+    height: 1px;
+    background-color: #ddd;
+    margin: 1.5rem auto;
+    position: relative;
+}
+.divider i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 0 10px;
+    color: var(--primary-color);
+}
+
+/* === SKILLS SECTION === */
+.skill-card {
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.skill-card i { color: var(--primary-color); }
+.skill-card p {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* === PROJECTS SECTION === */
+.project-card {
+    background: var(--secondary-color);
+    color: #eee;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.project-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+.project-card .card-body { flex-grow: 1; }
+.project-card .card-title { color: white; font-weight: 600; }
+.project-card .tech-tags .badge {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #f4f7f5;
+    margin-right: 5px;
+    font-weight: 400;
+}
+.project-card .card-footer {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: none;
+}
+
+/* === TIMELINE === */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #e0e0e0;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+}
+.timeline-item {
+    padding: 0 0 2rem 30px;
+    position: relative;
+    margin-bottom: 1rem;
+}
+.timeline-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 3px solid white;
+    top: 15px;
+    left: 8px;
+    z-index: 1;
+}
+.timeline-content { background-color: #fff; }
+.timeline-content h5 { font-weight: 600; }
+.timeline-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+.timeline-content ul li { margin-bottom: 0.5rem; }
+
+/* === FOOTER === */
+footer { background-color: var(--secondary-color); }
+.socials-footer a { color: white; margin: 0 0.5rem; font-size: 1.5rem; }
+
+/* === ANIMATION SYSTEM === */
+/* 1. On-Load Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.on-load-fade-in-down { animation: fadeInDown 1s ease-out forwards; }
+.on-load-fade-in-up { 
+    opacity: 0; /* Start hidden */
+    animation: fadeInUp 1s ease-out 0.5s forwards; /* 0.5s delay */
+}
+
+/* 2. Scroll-Based Animations */
+.scroll-animate {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in-up { transform: translateY(40px); }
+.fade-in-left { transform: translateX(-40px); }
+.zoom-in { transform: scale(0.95); }
+
+.scroll-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* === HOVER & INTERACTIVE EFFECTS === */
+.btn, .project-card, .skill-card, .timeline-content, .socials-footer a {
+    transition: all 0.3s ease-in-out;
+}
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.skill-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+}
+.socials-footer a:hover {
+    transform: scale(1.2);
+    color: var(--primary-color);
+}
+
+/* === NEW ANIMATIONS & ENHANCEMENTS === */
+
+/* 1. Gradient Underline for Navbar Links */
+.navbar-nav .nav-link {
+    position: relative; /* Required for the pseudo-element */
+    padding-bottom: 8px; /* Give some space for the underline */
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* Start in the middle */
+    transform: translateX(-50%); /* Center it */
+    width: 0; /* Start with no width */
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%; /* Expand to full width on hover */
+}
+
+
+/* 2. Button Fill Effect */
+.btn-primary {
+    position: relative;
+    overflow: hidden; /* Keep the fill effect inside the button */
+    transition: color 0.4s ease-out;
+    z-index: 1; /* Ensure text is above the fill effect */
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color); /* The color it will fill with */
+    transform: scaleX(0); /* Start with no width */
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: -1; /* Place the fill effect behind the button text */
+}
+
+.btn-primary:hover {
+    color: white; /* Change text color on hover to contrast with the fill */
+}
+
+.btn-primary:hover::before {
+    transform: scaleX(1); /* Expand to full width on hover */
+}
