@@ -1,3 +1,3 @@
 #Live Website
 
-You can view my portfolio at: [your-portfolio-link.com](https://bhaskarasp.github.io)
+You can view my portfolio at: [https://bhaskarasp.github.io](https://bhaskarasp.github.io)
